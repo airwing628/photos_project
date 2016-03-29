@@ -1,0 +1,116 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    background-color: black;
+}
+
+#container {
+    width: 1200px;
+    margin: 0px auto;
+    background-color: black;
+}
+
+#header {
+    background-color: black;
+    margin-left:10px;
+    margin-right: 10px;
+    height: 70px;
+    color: white;
+}
+
+    #header h1{
+        display: inline-block;
+        margin-left: 40px;
+    }
+ 
+#login_register {
+    margin-left: 600px;
+    display: inline-block; 
+    vertical-align: top;
+}
+
+    #login_register a {
+        text-decoration: none;
+        font-size: 0.9em;
+    }
+
+    #login_register input#submit_button {
+        background: orange;
+        border: 1px solid orange;
+        padding: 1px 4px;
+        border-radius: 4px;
+        margin-bottom: 5px;
+    }
+
+    #login_register input.input_fields {
+        background: white;
+    }
+
+a{
+    color: white;
+}
+ 
+#corner {
+    display: inline-block;
+}
+#body {
+    padding: 10px;
+}
+#scroll {
+ 
+    overflow: auto;
+}
+ 
+#mainpic{
+    text-align: center;
+}
+ 
+#likes {
+    display: inline;
+}
+
+.main_image{
+    width: 1100px;
+    padding: 0px 40px;
+}
+
+.thumbnails{
+    width: 300px;
+    vertical-align: top;
+    border: 3px solid gray;
+}
+
+#bottom_pics{
+    width: 1100px;
+    margin: 0px 40px;
+    margin-top: 15px;
+}
+
+#middle_pic {
+    margin: 0px 85px;
+}
+
+#blue {
+    color: #99FFFF;
+}
+
+#nav {
+    margin-left: 40px;
+    margin-bottom: 10px;
+}
+
+    #nav ul li{
+        display: inline-block;
+        color: #D0D0D0;
+        font-size: 0.8em;
+        padding: 10px 20px;
+        border-right: 1px solid #404040;
+    }
+
+    #nav ul li a {
+        text-decoration: none;
+    }
+
+#register input {
+        background: white;
+}

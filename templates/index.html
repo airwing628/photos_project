@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Project Week</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Photos">    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/jquery-ui.min.js') }}"></script>
+</head>
+
+<body>
+
+    <div id="container">
+
+        <div id="header">
+            <h1>Logo Here</h1>
+
+            <div id="login_register">
+                <p>Login</p>
+                <form action="/login" method="POST">
+                    <input class="input_fields" type="text" name="email" value="email">
+                    <input class="input_fields" type="password" name="password" value="password">
+                    <input id="submit_button" type="submit" value="submit">  
+                </form>
+                <a href="/register">Not a user? Register <span id="blue">here</span></a>
+            </div>
+        </div> <!-- end of header -->
+
+        <div id="nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li>Categories &raquo;</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
+        </div> <!--end of nav-->
+
+            <div id="main_body">
+                <img class="main_image" src="https://s3-us-west-1.amazonaws.com/codingdojo/1011.JPG">
+                <div id="bottom_pics">
+                    <a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/3001.jpg"></a>
+                    <a id="middle_pic" href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1005.jpg"></a>
+                    <a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/2001.jpg"></a>
+                </div>        
+            </div> <!-- end of main body -->  
+        
+    </div> <!--end of container -->
+   
+</body>
+</html>

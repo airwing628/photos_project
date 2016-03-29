@@ -1,0 +1,41 @@
+<!doctype html> 
+<html lang='en'>
+<head>
+	<title>Your Cart</title>
+	<link rel="stylesheet" type="text/css" href='stylesheet.css'>
+</head>
+<body>
+	<div id='container'>
+		<div id='header'>
+			<h1>Logo Here</h1>
+			<div id='corner'>
+				<a href="">Cart</a>
+				<a href="">Log Off</a>
+			</div>
+		</div>
+		<div id='body'>
+			<p> PULL IN PHOTOS and price </P>
+			<form action='/remove' method='post'>
+				<input type='submit' value='remove'>
+			</form>
+
+			<div id='purchase'>
+				<form action="" method="POST">
+				  <script
+				    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+				    data-key="pk_test_0haGVlEcEiv6PMEEi0jEHzn9"
+				    data-amount="2000"
+				    data-name="Demo Site"
+				    data-description="2 widgets ($20.00)"
+				    data-image="/128x128.png"
+				    data-locale="auto">
+				  </script>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
