@@ -40,40 +40,25 @@
 					<li><a href="#tabs-3">Landscapes</a></li>
 				</ul>
 				<div id='tabs-1'>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/3001.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/3003.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/3004.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/3005.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/3008.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/3009.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/3010.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/3011.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/3012.jpg"></a>
-					
+					{% for photo in session['all_photos'] %}
+						{% if photo['category'] == 'sports' %}
+							<a href="/display_photo/{{ photo['id'] }}"><img src="{{ photo['small_url'] }}"></a>
+						{% endif %}
+					{% endfor %}					
 				</div> 
 				<div id='tabs-2'>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1001.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1002.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1003.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1004.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1005.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1006.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1007.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1008.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1009.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1010.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1011.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1012.jpg"></a>			
+					{% for photo in session['all_photos'] %}
+						{% if photo['category'] == 'editorial' %}
+							<a href="/display_photo/{{ photo['id'] }}"><img src="{{ photo['small_url'] }}"></a>
+						{% endif %}
+					{% endfor %}			
 				</div>
 				<div id='tabs-3'>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/2001.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/2002.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/2003.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/2004.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/2005.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/2006.jpg"></a>
-					<a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/2009.jpg"></a>
-					<img src="">
+					{% for photo in session['all_photos'] %}
+						{% if photo['category'] == 'landscapes' %}
+							<a href="/display_photo/{{ photo['id'] }}"><img src="{{ photo['small_url'] }}"></a>
+						{% endif %}
+					{% endfor %}
 				</div>
 			</div>
 		</div>
