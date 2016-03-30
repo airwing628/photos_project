@@ -112,6 +112,14 @@ def display_photo(id):
     print photo
     return render_template('picture.html', photo = photo[0])
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact(): 
+    return render_template('contact.html')
+
 app.run(debug=True)
 
 
