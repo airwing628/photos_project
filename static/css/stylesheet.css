@@ -87,9 +87,10 @@ a{
 }
 
 .thumbnails{
-    width: 300px;
+    width: 265px;
     vertical-align: top;
     border: 3px solid gray;
+    
     
 }
 
@@ -98,9 +99,9 @@ a{
     margin-top: 15px;
 }
 
-#middle_pic {
+/*#middle_pic {
     margin: 0px 80px;
-}
+}*/
 
 #blue {
     color: #99FFFF;
