@@ -4,7 +4,7 @@ import re
 
 from flask.ext.bcrypt import Bcrypt
 
-
+# sdafha
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$')
 
 app = Flask(__name__)
