@@ -26,6 +26,11 @@ body {
         display: inline-block;
         margin-left: 40px;
     }
+#cart-logoff {
+    margin-left: 700px;
+    vertical-align: top;
+    display: inline-block;
+}
  
 #login_register {
     margin-left: 600px;
