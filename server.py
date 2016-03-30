@@ -4,11 +4,6 @@ import re
 
 from flask.ext.bcrypt import Bcrypt
 
-
-# hello wing and sammy1111. 
-# sdafha
-#this is wing's addition
-
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$')
 
 app = Flask(__name__)
@@ -20,7 +15,9 @@ app.secret_key = 'ThisIsSecret'
 mysql = MySQLConnector('photos_db')
 
 @app.route('/')
-def index():        
+def index():   
+    if 'email' in session:
+        print session     
     return render_template('index.html')
 
 @app.route('/register')
@@ -29,22 +26,23 @@ def register():
 
 @app.route('/process_registration', methods=['POST'])
 def process_registration():
-    last_name = request.form['last_name']
-    first_name = request.form['first_name']
-    email = request.form['email']
-    password = request.form['password'] 
-
     valid = True
-    if str(request.form['email']) == "" or not EMAIL_REGEX.match(request.form['email']):
-        flash("Please enter a proper email address")
+    if request.form['email'] == "" or not EMAIL_REGEX.match(request.form['email']):
+        flash("Please enter a valid email address")
         valid = False
-    if str(request.form['first_name']) == "" or not request.form["first_name"].isalpha():
+    query = "SELECT * FROM users WHERE email = '{}'".format( request.form['email'])
+    user = mysql.fetch(query)
+    if len(user)>0:
+        flash('Email already exists')
+        valid = False
+    print user
+    if request.form['first_name'] == "" or not request.form["first_name"].isalpha():
         flash("Enter valid First Name")
         valid = False
-    if str(request.form['last_name']) == "" or not request.form["last_name"].isalpha():
+    if request.form['last_name'] == "" or not request.form["last_name"].isalpha():
         flash("Enter valid Last Name")
         valid = False
-    if str(request.form['password']) == "" or len(request.form["password"]) < 8:
+    if request.form['password'] == "" or len(request.form["password"]) < 8:
         flash("Password must contain at least 8 characters") 
         valid = False
     if request.form['password'] !=  request.form['password2']:
@@ -52,13 +50,15 @@ def process_registration():
         valid = False 
 
     if valid == False:
-        return redirect('/register')    
-    
-    if valid == True:
+        return redirect('/register')
+    else:        
+        last_name = request.form['last_name']
+        first_name = request.form['first_name']
+        email = request.form['email']
+        password = request.form['password'] 
         pw_hash = bcrypt.generate_password_hash(password)
         query = "INSERT INTO users (first_name, last_name, email, password) VALUES ('{}', '{}', '{}','{}')".format(request.form['first_name'], request.form['last_name'], request.form['email'], pw_hash)
         mysql.run_mysql_query(query)
-        print query
         return redirect('/')
 
 
@@ -78,7 +78,7 @@ def login():
             session['email'] = user[0]['email']
             return render_template('/index.html')
         else:
-            flash('Incorrect Password')
+            flash('Invalid user/password combo')
             valid = False
     return redirect('/')  
     

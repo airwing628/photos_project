@@ -28,9 +28,16 @@ body {
     }
  
 #login_register {
-    margin-left: 600px;
+    margin-left: 650px;
     display: inline-block; 
     vertical-align: top;
+}
+
+#logout {
+    margin-left: 750px;
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: none;
 }
 
     #login_register a {
@@ -124,5 +131,6 @@ a{
 }
 
 #flashed_messages {
-    margin-left: 800px;
+    margin-left: 847px;
+    color: red;
 }
