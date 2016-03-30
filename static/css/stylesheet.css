@@ -110,9 +110,9 @@ a{
     #nav ul li a {
         text-decoration: none;
     }
-
-#reg {
-        height: 500px;
-        width: 300px;
-        background-color: white;
+.register form {
+    color: white;
+}
+.register form input {
+    background-color: white;
 }
