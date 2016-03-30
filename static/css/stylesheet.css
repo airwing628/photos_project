@@ -154,3 +154,11 @@ a{
     #user_interaction #comments {
         margin-top: 20px;
     }
+
+
+#comment_box{
+    width: 221px;
+    height: 400px;
+    background-color: white;
+    overflow: auto;
+}    

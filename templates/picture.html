@@ -3,7 +3,8 @@
 <head>
 	<title>Picture</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
-
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/jquery-ui.min.js') }}"></script>
 </head>
 <body>
 	<div id='container'>
@@ -54,10 +55,13 @@
 					</form>
 				</div> 
 				<div id='comments'> 
-					<form action='/comment' method='post'>
+					<form action='/add_comment/{{photo['id']}}' method='post'>
 						<textarea rows="10" cols="34" name='comment'></textarea><br>
 						<input class="submit_button" type='submit' value='Add comment'>
 					</form>
+				</div>
+				<div id="comment_box">
+					
 				</div>
 			</div> <!-- end of user_interaction -->
 			

@@ -81,6 +81,7 @@ def login():
             session['loggedin'] = True
             session['first_name'] = user[0]['first_name']
             session['email'] = user[0]['email']
+            session['user_id'] = user[0]['id']
             return render_template('/index.html')
         else:
             flash('Invalid user/password combo')
@@ -110,7 +111,7 @@ def display_photo(id):
     query = 'SELECT * FROM photos WHERE id="{}"'.format(id)
     photo = mysql.fetch(query)
     print photo
-    return render_template('picture.html', photo = photo[0])
+    return render_template('picture.html', photo = photo[0])  
 
 
 @app.route('/about')
@@ -120,6 +121,14 @@ def about():
 @app.route('/contact')
 def contact(): 
     return render_template('contact.html')
+
+@app.route('/add_comment/<id>', methods=['POST'])
+def comment(id):
+    query = "INSERT INTO comments(comment, created_at, updated_at, user_id, photo_id) VALUES ('{}', NOW(), NOW(), '{}', '{}')".format(request.form['comment'], session['user_id'], id)
+    mysql.run_mysql_query(query)
+    return redirect('/display_photo/' + id)
+
+
 
 
 app.run(debug=True)
