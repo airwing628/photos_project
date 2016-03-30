@@ -27,21 +27,7 @@ body {
         margin-left: 40px;
     }
 
-#cart-logoff {
-    list-style-type: none;
-    margin-left: 600px;
-    display: inline-block;
-}
-    #cart-logoff li{
-        display: inline-block;
-    }
-    #cart-logoff ul {
-        vertical-align: top
-    }
-    #cart-logoff ul li:after {
-        content: "|";
-        padding: 5px;
-    }
+
 
 #login_register {
     margin-left: 650px;
