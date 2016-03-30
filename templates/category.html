@@ -17,24 +17,32 @@
 	<div id='container'>
 		<div id='header'>
 			<h1>Logo Here</h1>
-			<div id='cart-logoff'>
-				<ul>
-					<li><a href="">Cart</a></li>
-					<li><a href="/logout">Log Out</a></li>
-				</ul>
-			</div>
+			{% if 'email' not in session %}
+                <div id="login_register">
+                    <p>Login</p>
+                    <form action="/login" method="POST">
+                        <input class="input_fields" type="text" name="email" placeholder="email">
+                        <input class="input_fields" type="password" name="password" placeholder="password">
+                        <input id="submit_button" type="submit" value="submit">  
+                    </form>
+                    <a href="/register">Not a user? Register <span id="blue">here</span></a>
+                </div>
+            {% else %}
+                <div id="logout">
+                    <p>Welcome {{ session['first_name']}} &nbsp &nbsp | &nbsp &nbsp <a href="/logout">Logout</a> &nbsp &nbsp | &nbsp &nbsp<a href="">Cart</a></p>
+                </div>
+
+            {% endif %}
+			
 		</div>
 		<div id="nav">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/category">Categories</a></li>
-
-            
-
-                <li>About</li>
-                <li>Contact</li>
+                <li><a href="/category">Categories </a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
-        </div> <!--end of nav-->
+        </div>
 		<div>
 			<div id='tabs'>
 				<ul>
