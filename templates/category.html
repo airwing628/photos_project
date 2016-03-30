@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 	<title>Category</title>
-	<link rel="stylesheet" type="text/css" href='stylesheet.css'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -17,11 +17,21 @@
 	<div id='container'>
 		<div id='header'>
 			<h1>Logo Here</h1>
-			<div id='corner'>
-				<a href="">Cart</a>
-				<a href="">Log Off</a>
+			<div id='cart-logoff'>
+				<ul>
+					<li><a href="">Cart</a></li>
+					<li><a href="">Log Out</a></li>
+				</ul>
 			</div>
 		</div>
+		<div id="nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li>Categories &raquo;</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
+        </div> <!--end of nav-->
 		<div>
 			<div id='tabs'>
 				<ul>

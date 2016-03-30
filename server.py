@@ -87,5 +87,15 @@ def logout():
     session.clear()
     return render_template('index.html')          
 
+@app.route('/category')
+def category(): 
+    return render_template('category.html')
+
 app.run(debug=True)
+
+
+
+
+
+
 

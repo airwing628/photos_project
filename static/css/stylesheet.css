@@ -26,7 +26,23 @@ body {
         display: inline-block;
         margin-left: 40px;
     }
- 
+
+#cart-logoff {
+    list-style-type: none;
+    margin-left: 600px;
+    display: inline-block;
+}
+    #cart-logoff li{
+        display: inline-block;
+    }
+    #cart-logoff ul {
+        vertical-align: top
+    }
+    #cart-logoff ul li:after {
+        content: "|";
+        padding: 5px;
+    }
+
 #login_register {
     margin-left: 650px;
     display: inline-block; 
@@ -78,9 +94,10 @@ a{
 }
 
 .thumbnails{
-    width: 300px;
+    width: 265px;
     vertical-align: top;
     border: 3px solid gray;
+    
     
 }
 
@@ -89,9 +106,9 @@ a{
     margin-top: 15px;
 }
 
-#middle_pic {
+/*#middle_pic {
     margin: 0px 80px;
-}
+}*/
 
 #blue {
     color: #99FFFF;
