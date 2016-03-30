@@ -1,6 +1,9 @@
 * {
     margin: 0px;
     padding: 0px;
+}
+
+body {
     background-color: black;
 }
 
@@ -62,17 +65,9 @@ a{
     overflow: auto;
 }
  
-#mainpic{
-    text-align: center;
-}
  
 #likes {
     display: inline;
-}
-
-.main_image{
-    width: 1100px;
-    padding: 0px 40px;
 }
 
 .thumbnails{
@@ -84,12 +79,11 @@ a{
 
 #bottom_pics{
     width: 1100px;
-    margin: 0px 40px;
     margin-top: 15px;
 }
 
 #middle_pic {
-    margin: 0px 85px;
+    margin: 0px 80px;
 }
 
 #blue {
@@ -112,12 +106,21 @@ a{
     #nav ul li a {
         text-decoration: none;
     }
-.register form {
-    color: white;
-}
 
-.register form input {
+/*.register form {
+    color: white;
+}*/
+
+/*.register form input {
     background-color: white;
+}*/
+
+.register {
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    color: black;
+    margin: 0px auto;
 }
 
 #flashed_messages {

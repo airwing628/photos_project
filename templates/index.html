@@ -14,7 +14,6 @@
           $("#main_body").slidesjs({
             width: 1100,
             height: 700,
-
             play: {
                 active: false,
                 effect: "slide",
@@ -24,16 +23,8 @@
                 restartDelay: 2500,
             },
             navigation: false,
-            pagination: false
-        
+            pagination: false        
           });
-          // $("#main_body").slidesjs({
-          //    pagination:{
-          //       active: false,
-          //       effect: "fade"
-          //   }
-
-          // });
         });
 
   </script>
@@ -56,17 +47,18 @@
                 </form>
                 <a href="/register">Not a user? Register <span id="blue">here</span></a>
             </div>
+
         </div> <!-- end of header -->
 
         <div id="flashed_messages">
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            <p> {{message}} </p>
-                        {% endfor %}    
-                    {% endif %}
-                {% endwith %}
-        </div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p> {{message}} </p>
+                    {% endfor %}    
+                {% endif %}
+            {% endwith %}
+        </div> <!--end of flashed_messsages -->
 
         <div id="nav">
             <ul>
@@ -77,18 +69,21 @@
             </ul>
         </div> <!--end of nav-->
 
-            <div id="main_body">
-                <img class="main_image" src="https://s3-us-west-1.amazonaws.com/codingdojo/1011.JPG">
-                <img class="main_image" src="https://s3-us-west-1.amazonaws.com/codingdojo/1010.JPG">
-                <img class="main_image" src="https://s3-us-west-1.amazonaws.com/codingdojo/2006.JPG">
-            </div>    
-                <div id="bottom_pics">
+        <div id="main_body">
+            <img class="main_image" src="https://s3-us-west-1.amazonaws.com/codingdojo/1011.JPG">
+            <img class="main_image" src="https://s3-us-west-1.amazonaws.com/codingdojo/1010.JPG">
+            <img class="main_image" src="https://s3-us-west-1.amazonaws.com/codingdojo/2006.JPG">
+        </div> <!-- end of main body -->   
 
-                    <a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/3001.jpg"></a>
-                    <a id="middle_pic" href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1005.jpg"></a>
-                    <a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/2001.jpg"></a>
-                </div>        
-            </div> <!-- end of main body -->  
+        <div id="bottom_pics">
+
+            <a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/3001.jpg"></a>
+            <a id="middle_pic" href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/1005.jpg"></a>
+            <a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/2001.jpg"></a>
+
+        </div>        
+
+
     </div> <!--end of container -->
    
 </body>
