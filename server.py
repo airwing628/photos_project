@@ -50,12 +50,15 @@ def process_registration():
     if request.form['password'] !=  request.form['password2']:
         flash("passwords must match")
         valid = False 
-    return redirect('/')    
+
+    if valid == False:
+        return redirect('/')    
     
     if valid == True:
         pw_hash = bcrypt.generate_password_hash(password)
         query = "INSERT INTO users (first_name, last_name, email, password) VALUES ('{}', '{}', '{}','{}')".format(request.form['first_name'], request.form['last_name'], request.form['email'], pw_hash)
         mysql.run_mysql_query(query)
+        print query
         return redirect('/')
 
 
@@ -70,6 +73,7 @@ def login():
         session['loggedin'] = True
         session['first_name'] = user[0]['first_name']
         session['email'] = user[0]['email']
+        print "HIHIHIHIHIHI"
         return render_template('/index.html')
     else:
         flash('Incorrect Password')
