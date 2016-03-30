@@ -52,7 +52,7 @@ def process_registration():
         valid = False 
 
     if valid == False:
-        return redirect('/')    
+        return redirect('/register')    
     
     if valid == True:
         pw_hash = bcrypt.generate_password_hash(password)

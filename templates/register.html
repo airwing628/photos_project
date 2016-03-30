@@ -17,6 +17,16 @@
             <h1>Logo Here</h1>
         </div> <!-- end of header -->  
 
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p> {{message}} </p>
+                {% endfor %}    
+            {% endif %}
+        {% endwith %}
+
+
         <div class="register">
             <form action="/process_registration" method="POST">
                 <h3>Regsiter</h3>
