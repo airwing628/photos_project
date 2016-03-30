@@ -91,6 +91,18 @@ def logout():
 def category(): 
     return render_template('category.html')
 
+@app.route('/payment')
+def payment(): 
+    return render_template('payment.html')
+
+@app.route('/picture')
+def picture(): 
+    return render_template('picture.html')
+
+@app.route('/purchase')
+def purchase(): 
+    return render_template('purchase.html')
+
 app.run(debug=True)
 
 
