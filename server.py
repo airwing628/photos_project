@@ -18,6 +18,11 @@ mysql = MySQLConnector('photos_db')
 def index():   
     if 'email' in session:
         print session     
+    if 'all_photos' not in session:
+        query = "SELECT * FROM photos"
+        all_photos = mysql.fetch(query)
+        session['all_photos'] = all_photos
+        print session['all_photos']
     return render_template('index.html')
 
 @app.route('/register')
@@ -85,23 +90,31 @@ def login():
 @app.route('/logout')
 def logout():
     session.clear()
-    return render_template('index.html')          
+    return redirect('/')          
 
 @app.route('/category')
 def category(): 
+    print session['all_photos']
     return render_template('category.html')
 
 @app.route('/payment')
 def payment(): 
     return render_template('payment.html')
 
-@app.route('/picture')
-def picture(): 
-    return render_template('picture.html')
+# @app.route('/picture')
+# def picture(): 
+#     return render_template('picture.html')
 
 @app.route('/purchase')
 def purchase(): 
     return render_template('purchase.html')
+
+@app.route('/display_photo/<id>')
+def display_photo(id):
+    query = 'SELECT * FROM photos WHERE id="{}"'.format(id)
+    photo = mysql.fetch(query)
+    print photo
+    return render_template('picture.html', photo = photo[0])
 
 app.run(debug=True)
 
