@@ -5,7 +5,7 @@ import re
 from flask.ext.bcrypt import Bcrypt
 
 
-# hello wing and andrew
+# hello wing and sammy. 
 # sdafha
 #this is wing's addition
 
