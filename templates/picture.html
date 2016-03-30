@@ -26,24 +26,30 @@
 			<div id='mainpic'> 
  				<img src="{{ photo['url'] }}"> 
 			</div>
-			<div id='row'>
-				<div id='likes'>
-					<form action='/like' method='post'>
-						<input type='submit' value='Like'>
-					</form>  
+
+			<div id="user_interaction">
+
+				<div id='row'>
+					<div id='likes'>
+						<form action='/like' method='post'>
+							<input type='submit' value='Like'>
+						</form>  
+					</div>
+					<div id='price'>
+					</div>
+					<form action='/purchase' method= 'post'>
+						<input type='submit' value='Add to Cart'>
+					</form>
+				</div> 
+				<div id='comments'> 
+					<form action='/comment' method='post'>
+						<textarea rows="10" cols="34" name='comment'></textarea><br>
+						<input class="submit_button" type='submit' value='Add comment'>
+					</form>
 				</div>
-				<div id='price'>
-				</div>
-				<form action='/purchase' method= 'post'>
-					<input type='submit' value='Add to Cart'>
-				</form>
-			</div> 
-			<div id='comments'> 
-				<form action='/comment' method='post'>
-					<textarea name='comment'></textarea>
-					<input type='submit' value='Add comment'>
-				</form>
-			</div>
+
+			</div> <!-- end of user_interaction -->
+
 		</div>
 	</div>
 </body>

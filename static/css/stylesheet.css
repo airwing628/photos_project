@@ -61,7 +61,7 @@ body {
         font-size: 0.9em;
     }
 
-    #login_register input#submit_button {
+    #login_register input.submit_button {
         background: orange;
         border: 1px solid orange;
         padding: 1px 4px;
@@ -106,9 +106,6 @@ a{
     margin-top: 15px;
 }
 
-/*#middle_pic {
-    margin: 0px 80px;
-}*/
 
 #blue {
     color: #99FFFF;
@@ -131,14 +128,6 @@ a{
         text-decoration: none;
     }
 
-/*.register form {
-    color: white;
-}*/
-
-/*.register form input {
-    background-color: white;
-}*/
-
 .register {
     width: 300px;
     height: 400px;
@@ -151,3 +140,31 @@ a{
     margin-left: 847px;
     color: red;
 }
+
+#mainpic {
+    display: inline-block;
+    width: 950px;
+}
+
+    #mainpic img {
+        height: 98%;
+        width: 98%;
+    }
+
+#user_interaction{
+    display: inline-block;
+    vertical-align: top;
+}
+
+    #user_interaction input.submit_button {
+        background: orange;
+        border: 1px solid orange;
+        padding: 1px 4px;
+        border-radius: 4px;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    #user_interaction #comments {
+        margin-top: 20px;
+    }
