@@ -50,8 +50,8 @@
             <div id="login_register">
                 <p>Login</p>
                 <form action="/login" method="POST">
-                    <input class="input_fields" type="text" name="email" value="email">
-                    <input class="input_fields" type="password" name="password" value="password">
+                    <input class="input_fields" type="text" name="email" placeholder="email">
+                    <input class="input_fields" type="password" name="password" placeholder="password">
                     <input id="submit_button" type="submit" value="submit">  
                 </form>
                 <a href="/register">Not a user? Register <span id="blue">here</span></a>
@@ -79,7 +79,13 @@
                     <a href="/display_all"><img class="thumbnails" src="https://s3-us-west-1.amazonaws.com/codingdojo/small/2001.jpg"></a>
                 </div>        
             </div> <!-- end of main body -->  
-        
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p> {{message}} </p>
+                        {% endfor %}    
+                    {% endif %}
+                {% endwith %}
     </div> <!--end of container -->
    
 </body>

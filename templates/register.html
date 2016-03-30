@@ -1,21 +1,24 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Project Week</title>
+    <title>Register</title>
     <meta charset="utf-8">
-    <meta name="description" content="Register"> 
+    <meta name="description" content="Photos">    
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
-    <script type="text/javascript" src="{{ url_for('static', filename='jquery/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='jquery/jquery-ui.min.js') }}"></script>
 </head>
+
 <body>
+
     <div id="container">
-        <div id="header">
+
+         <div id="header">
             <h1>Logo Here</h1>
-        </div>
+        </div> <!-- end of header -->  
 
         <div class="register">
-            <form action="/register" method="POST">
+            <form action="/process_registration" method="POST">
                 <h3>Regsiter</h3>
                 <p>First Name:<input type="text" name="first_name" placeholder="First Name"></p>
                 <p>Last Name:<input type="text" name="last_name" placeholder="Last Name"></p>
@@ -24,9 +27,9 @@
                 <p>Confirm Paswword<input type="password" name="password2" placeholder="re-enter password"></p>
                 <p><input type="submit" name="submit" value="register"></p>   
             </form>
-        </div>                  
-
-    </div>
-
+        </div> <!-- end of register -->  
+        
+    </div> <!--end of container -->
+   
 </body>
 </html>
