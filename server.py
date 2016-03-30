@@ -52,7 +52,7 @@ def process_registration():
         valid = False 
 
     if valid == False:
-        return redirect('/')    
+        return redirect('/register')    
     
     if valid == True:
         pw_hash = bcrypt.generate_password_hash(password)
@@ -69,16 +69,19 @@ def login():
     password = request.form['password'] 
     query = "SELECT * FROM users WHERE email = '{}'".format(email)
     user = mysql.fetch(query)
-    if bcrypt.check_password_hash(user[0]['password'], password):
-        session['loggedin'] = True
-        session['first_name'] = user[0]['first_name']
-        session['email'] = user[0]['email']
-        print "HIHIHIHIHIHI"
-        return render_template('/index.html')
-    else:
-        flash('Incorrect Password')
-        valid = False
-        return redirect('/')  
+    if len(user) < 1:
+        flash('Invalid user/password combo')
+    else: 
+        if bcrypt.check_password_hash(user[0]['password'], password):
+            session['loggedin'] = True
+            session['first_name'] = user[0]['first_name']
+            session['email'] = user[0]['email']
+            return render_template('/index.html')
+        else:
+            flash('Incorrect Password')
+            valid = False
+    return redirect('/')  
+    
 @app.route('/logout')
 def logout():
     session.clear()

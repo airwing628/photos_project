@@ -8,6 +8,7 @@
     width: 1200px;
     margin: 0px auto;
     background-color: black;
+    color: white;
 }
 
 #header {
@@ -114,6 +115,11 @@ a{
 .register form {
     color: white;
 }
+
 .register form input {
     background-color: white;
+}
+
+#flashed_messages {
+    margin-left: 800px;
 }
