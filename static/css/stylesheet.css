@@ -111,6 +111,8 @@ a{
         text-decoration: none;
     }
 
-#register input {
-        background: white;
+#reg {
+        height: 500px;
+        width: 300px;
+        background-color: white;
 }

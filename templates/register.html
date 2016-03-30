@@ -1,32 +1,38 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Project Week</title>
+    <title>Register</title>
     <meta charset="utf-8">
-    <meta name="description" content="Register"> 
+    <meta name="description" content="Photos">    
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
-    <script type="text/javascript" src="{{ url_for('static', filename='jquery/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='jquery/jquery-ui.min.js') }}"></script>
 </head>
+
 <body>
+
     <div id="container">
-        <div id="header">
+
+         <div id="header">
             <h1>Logo Here</h1>
-        </div>
+        </div> <!-- end of header -->  
 
-        <div class="register">
-            <form action="/register" method="POST">
-                <h3>Regsiter</h3>
-                <p>First Name:<input type="text" name="first_name" placeholder="First Name"></p>
-                <p>Last Name:<input type="text" name="last_name" placeholder="Last Name"></p>
-                <p>email:<input type="text" name="email" placeholder="email"></p>
-                <p>Password:<input type="password" name="password" placeholder="password"></p>
-                <p>Confirm Paswword<input type="password" name="password2" placeholder="re-enter password"></p>
-                <p><input type="submit" name="submit" value="register"></p>   
+        <div id="reg">
+
+            <h3>Register</h3>
+
+            <form action="/process_registration" method="POST">
+                First Name:<input type="text" name="first_name" placeholder="First Name"><br>
+                Last Name:<input type="text" name="last_name" placeholder="Last Name"><br>
+                Email:<input type="text" name="email" placeholder="email"><br>
+                Password:<input type="password" name="password" placeholder="password"><br>
+                Confirm Password<input type="password" name="password2" placeholder="re-enter password"><br>
+                <input type="submit" name="submit" value="register">   
             </form>
-        </div>                  
 
-    </div>
-
+        </div> <!-- end of register -->  
+        
+    </div> <!--end of container -->
+   
 </body>
 </html>
