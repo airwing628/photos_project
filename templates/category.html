@@ -16,14 +16,16 @@
 <body>
 	<div id='container'>
 		<div id='header'>
-			<h1>Logo Here</h1>
+            <div id="logo">
+                <h1>Photo Dojo</h1>
+            </div>
 			{% if 'email' not in session %}
                 <div id="login_register">
                     <p>Login</p>
                     <form action="/login" method="POST">
                         <input class="input_fields" type="text" name="email" placeholder="email">
                         <input class="input_fields" type="password" name="password" placeholder="password">
-                        <input id="submit_button" type="submit" value="submit">  
+                        <input class="submit_button" type="submit" value="submit">  
                     </form>
                     <a href="/register">Not a user? Register <span id="blue">here</span></a>
                 </div>

@@ -117,34 +117,22 @@ def about():
 def contact(): 
     return render_template('contact.html')
 
-# @app.route('/add_comment/<id>', methods=['POST'])
-# def add_comment(id):
-#     query = "INSERT INTO comments(comment, created_at, updated_at, user_id, photo_id) VALUES ('{}', NOW(), NOW(), '{}', '{}')".format(request.form['comment'], session['user_id'], id)
-#     mysql.run_mysql_query(query)
-#     return redirect('/display_photo/' + id)
-
 @app.route('/get_comments/index_json/<id>')
 def get_comments(id):
-    query = "SELECT comments.comment, users.first_name, comments.created_at FROM comments JOIN users ON users.id = comments.user_id WHERE comments.photo_id={}".format(id)
+    query = "SELECT comments.comment, users.first_name, DATE_FORMAT(comments.created_at, '%M %d, %Y, %I:%i:%s %p') AS created_at FROM comments JOIN users ON users.id = comments.user_id WHERE comments.photo_id={} ORDER BY created_at DESC".format(id)
     comments = mysql.fetch(query)
     return jsonify(comments=comments)
 
 @app.route('/insert_comment/index_json/<id>', methods=['POST'])
 def insert_comment(id):
-    print 'IN INSERT!!!!'
-    print id
-    print request.form
-
     query = "INSERT INTO comments (comment, created_at, updated_at, user_id, photo_id) VALUES ('{}', NOW(), NOW(), '{}', '{}')".format(request.form['comment'], session['user_id'], id)
-    print query
     mysql.run_mysql_query(query)
-    query = "SELECT comments.comment, users.first_name, comments.created_at FROM comments JOIN users ON users.id = comments.user_id WHERE comments.photo_id={}".format(id)
+    query = "SELECT comments.comment, users.first_name, DATE_FORMAT(comments.created_at, '%M %d, %Y, %I:%i:%s %p') AS created_at FROM comments JOIN users ON users.id = comments.user_id WHERE comments.photo_id={} ORDER BY created_at DESC".format(id)
+    print query
     comments = mysql.fetch(query)
-    print comments
     return jsonify(comments=comments)
 
 app.run(debug=True)
-
 
 
 
