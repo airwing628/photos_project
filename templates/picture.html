@@ -54,19 +54,47 @@
 						<input type='submit' value='Add to Cart'>
 					</form>
 				</div> 
+
 				<div id='comments'> 
-					<form action='/add_comment/{{photo['id']}}' method='post'>
+					<form id="comment_form" action='' method='post'>
 						<textarea rows="10" cols="34" name='comment'></textarea><br>
 						<input class="submit_button" type='submit' value='Add comment'>
 					</form>
 				</div>
-				<div id="comment_box">
-					
+
+				<div id="comment_box">					
 				</div>
-			</div> <!-- end of user_interaction -->
-			
+			</div> <!-- end of user_interaction -->			
 		</div>
 	</div>
+
+	<script type="text/javascript">
+		$.get('/get_comments/index_json/{{ photo["id"] }}', function(res){
+			console.log(res);
+			html_str = "";
+			for (var i = 0; i<res.comments.length; i++){
+				html_str += "<p>"+res.comments[i].first_name+" says: "+res.comments[i].comment+"</p><p>"+res.comments[i].created_at+"</p>"
+			}
+			console.log(html_str);
+			$("#comment_box").html(html_str);
+		}, 'json');
+
+		$('#comment_form').submit(function(){
+
+			$.post('/insert_comment/index_json/{{ photo["id"] }}', $(this).serialize(), function(res){
+				html_str = "";
+				for (var i = 0; i<res.comments.length; i++){
+				html_str += "<p>"+res.comments[i].first_name+" says: "+res.comments[i].comment+"</p><p>"+res.comments[i].created_at+"</p>"
+				};
+				console.log(html_str);
+				$("#comment_box").html(html_str);
+
+			}, 'json');
+
+			return false;
+		});
+
+	</script>
 </body>
 </html>
 

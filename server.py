@@ -1,4 +1,4 @@
-from flask import Flask, send_file, render_template, redirect, request, session, flash
+from flask import Flask, send_file, render_template, redirect, request, session, flash, jsonify
 from mysqlconnection import MySQLConnector
 import re
 
@@ -15,14 +15,11 @@ app.secret_key = 'ThisIsSecret'
 mysql = MySQLConnector('photos_db')
 
 @app.route('/')
-def index():   
-    if 'email' in session:
-        print session     
+def index():       
     if 'all_photos' not in session:
         query = "SELECT * FROM photos"
         all_photos = mysql.fetch(query)
         session['all_photos'] = all_photos
-        print session['all_photos']
     return render_template('index.html')
 
 @app.route('/register')
@@ -40,7 +37,6 @@ def process_registration():
     if len(user)>0:
         flash('Email already exists')
         valid = False
-    print user
     if request.form['first_name'] == "" or not request.form["first_name"].isalpha():
         flash("Enter valid First Name")
         valid = False
@@ -110,7 +106,6 @@ def purchase():
 def display_photo(id):
     query = 'SELECT * FROM photos WHERE id="{}"'.format(id)
     photo = mysql.fetch(query)
-    print photo
     return render_template('picture.html', photo = photo[0])  
 
 
@@ -122,14 +117,31 @@ def about():
 def contact(): 
     return render_template('contact.html')
 
-@app.route('/add_comment/<id>', methods=['POST'])
-def comment(id):
-    query = "INSERT INTO comments(comment, created_at, updated_at, user_id, photo_id) VALUES ('{}', NOW(), NOW(), '{}', '{}')".format(request.form['comment'], session['user_id'], id)
+# @app.route('/add_comment/<id>', methods=['POST'])
+# def add_comment(id):
+#     query = "INSERT INTO comments(comment, created_at, updated_at, user_id, photo_id) VALUES ('{}', NOW(), NOW(), '{}', '{}')".format(request.form['comment'], session['user_id'], id)
+#     mysql.run_mysql_query(query)
+#     return redirect('/display_photo/' + id)
+
+@app.route('/get_comments/index_json/<id>')
+def get_comments(id):
+    query = "SELECT comments.comment, users.first_name, comments.created_at FROM comments JOIN users ON users.id = comments.user_id WHERE comments.photo_id={}".format(id)
+    comments = mysql.fetch(query)
+    return jsonify(comments=comments)
+
+@app.route('/insert_comment/index_json/<id>', methods=['POST'])
+def insert_comment(id):
+    print 'IN INSERT!!!!'
+    print id
+    print request.form
+
+    query = "INSERT INTO comments (comment, created_at, updated_at, user_id, photo_id) VALUES ('{}', NOW(), NOW(), '{}', '{}')".format(request.form['comment'], session['user_id'], id)
+    print query
     mysql.run_mysql_query(query)
-    return redirect('/display_photo/' + id)
-
-
-
+    query = "SELECT comments.comment, users.first_name, comments.created_at FROM comments JOIN users ON users.id = comments.user_id WHERE comments.photo_id={}".format(id)
+    comments = mysql.fetch(query)
+    print comments
+    return jsonify(comments=comments)
 
 app.run(debug=True)
 
