@@ -155,23 +155,34 @@ a{
     vertical-align: top;
 }
 
+    #user_interaction input.cart_button {
+        padding: 3px 5px;
+        border-radius: 4px;
+        margin-bottom: 6px;
+        font-weight: bold;
+    }
+
     #user_interaction input.submit_button {
         background: orange;
         border: 1px solid orange;
         padding: 1px 4px;
-        border-radius: 4px;
+        border-radius: 5px;
         margin-bottom: 5px;
         font-weight: bold;
     }
 
+        #user_interaction #comments input.submit_button {
+            margin-left: 134px;
+        }
+
     #user_interaction #comments {
-        margin-top: 20px;
+        margin-top: 40px;
     }
 
 
 #comment_box{
     width: 215px;
-    height: 300px;
+    height: 250px;
     background-color: #C8C8C8;
     overflow: auto;
     color: black;
@@ -185,7 +196,7 @@ a{
     color: blue;
 }    
 
-#orange_title {
+#blue_title {
     font-weight: bold;
     color: #00CCFF;
 }
@@ -230,8 +241,72 @@ a{
 
 }
 
+<<<<<<< HEAD
 #tabs img{
     
     border: 1px solid silver;
     
 }
+=======
+#download_body {
+    width: 1060px;
+    margin: 50px auto;
+    font-family: tahoma;
+    background-color: #303030;
+    border: 5px solid #585858;
+    padding: 30px 0px 30px 100px;
+}
+
+    #download_body h3{
+        color: #00CCFF;
+        margin: 20px 0px;
+    }
+
+    #download_body li{
+        margin: 15px 0px 15px 50px;
+    }
+
+#tabs img {
+    border: 1px solid gray;
+    vertical-align: top;
+    margin-bottom: 10px;
+    width: 356px;
+    overflow: none;
+}
+
+#contact {
+    margin: 0px auto;
+    padding: 20px;
+    text-align: center;
+    height: 300px;
+    width: 1000px;   
+    background-color: #4d4d4d;
+    border: 3px solid #999999;
+}
+    #contact h2{
+        margin-top: 70px;
+    }
+.reach_us {
+    margin: 40px 2px 20px 2px;
+    display: inline-block;
+    width: 200px;
+    height: 300px;
+}
+    .reach_us h3{
+        text-decoration: underline;
+    }
+#about {
+    padding: 50px;
+    margin: 0px auto;
+    text-align: center;
+    height: 680px;
+    width: 500px;   
+    background-color: #4d4d4d;
+    border: 3px solid #999999;
+    overflow: auto;
+}
+    #about h3{  
+        margin-top: 30px; 
+
+    }
+>>>>>>> fb2da9b3f0bcee9722dc41ae19d4e9d159824b1f
