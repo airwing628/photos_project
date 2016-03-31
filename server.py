@@ -1,6 +1,10 @@
 from flask import Flask, send_file, render_template, redirect, request, session, flash, jsonify
+
 from mysqlconnection import MySQLConnector
+
 import re
+
+import stripe
 
 from flask.ext.bcrypt import Bcrypt
 
@@ -154,6 +158,25 @@ def add_to_cart(id):
 def remove_cart_item(id):
     session['cart'].remove(id)
     session['total_items'] = len(session['cart'])
+    return redirect('/purchase')
+
+@app.route('/process_stripe', methods=['POST'])
+def process_stripe():
+    print request.form
+    stripe.api_key = "sk_test_UhKc5Gi7liEBEhQ3Hfs9FvRs"
+    # Get the credit card details submitted by the form
+    token = request.form['stripeToken']
+    # Create the charge on Stripe's servers - this will charge the user's card
+    try:
+        charge = stripe.Charge.create(
+            amount=1000, # amount in cents, again
+            currency="usd",
+            source=token,
+            description="Example charge"
+        )
+    except stripe.error.CardError, e:
+      # The card has been declined
+        pass
     return redirect('/purchase')
 
 app.run(debug=True)
