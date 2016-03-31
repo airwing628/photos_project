@@ -229,3 +229,26 @@ a{
     color: #FF3300;
 
 }
+
+#contact {
+    margin: 0px auto;
+    padding: 20px;
+    text-align: center;
+    height: 400px;
+    width: 1000px;   
+    background-color: #4d4d4d;
+    border: 3px solid #999999;
+}
+    #contact h2{
+        margin-top: 70px;
+    }
+.reach_us {
+    margin: 40px 2px 20px 2px;
+    display: inline-block;
+    width: 200px;
+    height: 300px;
+}
+    .reach_us h3{
+        text-decoration: underline;
+    }
+
