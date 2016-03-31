@@ -22,9 +22,8 @@
                 </div>
             {% else %}
                 <div id="welcome_cart">
-                    <p>Welcome {{ session['first_name']}} &nbsp &nbsp | &nbsp &nbsp <a href="">Cart ( {{ session['total_items']}} )</a> &nbsp &nbsp | &nbsp &nbsp<a href="/logout">Logout</a></p>
+                    <p>Welcome {{ session['first_name']}} &nbsp &nbsp | &nbsp &nbsp <a href="/purchase">Cart ( {{ session['total_items']}} )</a> &nbsp &nbsp | &nbsp &nbsp<a href="/logout">Logout</a></p>
                 </div>
-
             {% endif %}
 		</div>
 		<div id="nav">
@@ -36,10 +35,17 @@
             </ul>
         </div> <!--end of nav-->
 		<div id='body'>
-			<p> PULL IN PHOTOS and price </P>
-			<form action='/remove' method='post'>
-				<input type='submit' value='remove'>
-			</form>
+
+			{% for item in session['total_cart'] %}
+
+				<div id = "checkout">
+					<img src="{{ item['small_url'] }}"> ${{ item['price'] }} | <a href="/remove_cart_item/{{ item['id'] }}">Remove from cart</a>
+				</div>
+
+			{% endfor %}
+
+			<p>Total: $ {{ total_price }} </p>
+
 
 			<div id='purchase'>
 				<form action="" method="POST">
@@ -47,8 +53,8 @@
 				    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 				    data-key="pk_test_0haGVlEcEiv6PMEEi0jEHzn9"
 				    data-amount="2000"
-				    data-name="Demo Site"
-				    data-description="2 widgets ($20.00)"
+				    data-name="Photo Dojo"
+				    data-description="2 photos ($20.00)"
 				    data-image="/128x128.png"
 				    data-locale="auto">
 				  </script>

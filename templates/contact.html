@@ -23,7 +23,7 @@
                 </div>
             {% else %}
                 <div id="welcome_cart">
-                    <p>Welcome {{ session['first_name']}} &nbsp &nbsp | &nbsp &nbsp <a href="">Cart ( {{ session['total_items']}} )</a> &nbsp &nbsp | &nbsp &nbsp<a href="/logout">Logout</a></p>
+                    <p>Welcome {{ session['first_name']}} &nbsp &nbsp | &nbsp &nbsp <a href="/purchase">Cart ( {{ session['total_items']}} )</a> &nbsp &nbsp | &nbsp &nbsp<a href="/logout">Logout</a></p>
                 </div>
 
             {% endif %}

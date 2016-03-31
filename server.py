@@ -101,7 +101,15 @@ def payment():
 
 @app.route('/purchase')
 def purchase(): 
-    return render_template('purchase.html')
+    session['total_cart'] = []
+    for photo in session['cart']:
+        query = "SELECT * FROM photos WHERE id = {}".format(photo)
+        fetch = mysql.fetch(query)
+        session['total_cart'].append(fetch[0])
+    total_price = 0
+    for i in range(0, len(session['total_cart'])):
+        total_price += session['total_cart'][i]['price']
+    return render_template('purchase.html', total_price = total_price)
 
 @app.route('/display_photo/<id>')
 def display_photo(id):
@@ -134,7 +142,6 @@ def insert_comment(id):
 
 @app.route('/add_to_cart/<id>', methods=['POST'])
 def add_to_cart(id):
-    print id
     if 'cart' not in session:
         session['cart'] = []
         session['cart'].append(id)
@@ -142,6 +149,12 @@ def add_to_cart(id):
         session['cart'].append(id)
     session['total_items'] = len(session['cart'])
     return redirect ('/category')
+
+@app.route('/remove_cart_item/<id>')
+def remove_cart_item(id):
+    session['cart'].remove(id)
+    session['total_items'] = len(session['cart'])
+    return redirect('/purchase')
 
 app.run(debug=True)
 
