@@ -17,7 +17,7 @@
 	<div id='container'>
 		<div id='header'>
 
-            <h1>Photo Dojo</h1>
+            <a href="/"><h1>Photo Dojo</h1></a>
 
 			{% if 'email' not in session %}
                 <div id="login_register">
@@ -48,9 +48,9 @@
 		<div>
 			<div id='tabs'>
 				<ul>
-					<li><a href="#tabs-1">Sports</a></li>
-					<li><a href="#tabs-2">Editorials</a></li>
-					<li><a href="#tabs-3">Landscapes</a></li>
+					<li><a class="tabstyle" href="#tabs-1">Sports</a></li>
+					<li><a class="tabstyle"href="#tabs-2">Editorials</a></li>
+					<li><a class="tabstyle"href="#tabs-3">Landscapes</a></li>
 				</ul>
 				<div id='tabs-1'>
 					{% for photo in session['all_photos'] %}

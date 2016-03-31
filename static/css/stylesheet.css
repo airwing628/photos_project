@@ -241,6 +241,11 @@ a{
 
 }
 
+#tabs img{
+    
+    border: 1px solid silver;
+    
+}
 #download_body {
     width: 1060px;
     margin: 50px auto;
@@ -304,3 +309,4 @@ a{
 #user_interaction p{
     width: 215px;
 }
+
