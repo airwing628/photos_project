@@ -182,3 +182,12 @@ a{
     font-weight: bold;
     color: blue;
 }    
+
+#checkout img{
+    width: 180px;
+}
+
+#checkout p{
+    margin-left: 100px;
+    display: inline-block;
+}
