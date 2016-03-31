@@ -266,3 +266,39 @@ a{
     width: 356px;
     overflow: none;
 }
+
+#contact {
+    margin: 0px auto;
+    padding: 20px;
+    text-align: center;
+    height: 300px;
+    width: 1000px;   
+    background-color: #4d4d4d;
+    border: 3px solid #999999;
+}
+    #contact h2{
+        margin-top: 70px;
+    }
+.reach_us {
+    margin: 40px 2px 20px 2px;
+    display: inline-block;
+    width: 200px;
+    height: 300px;
+}
+    .reach_us h3{
+        text-decoration: underline;
+    }
+#about {
+    padding: 50px;
+    margin: 0px auto;
+    text-align: center;
+    height: 680px;
+    width: 500px;   
+    background-color: #4d4d4d;
+    border: 3px solid #999999;
+    overflow: auto;
+}
+    #about h3{  
+        margin-top: 30px; 
+
+    }
