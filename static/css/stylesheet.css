@@ -234,7 +234,7 @@ a{
     margin: 0px auto;
     padding: 20px;
     text-align: center;
-    height: 400px;
+    height: 300px;
     width: 1000px;   
     background-color: #4d4d4d;
     border: 3px solid #999999;
@@ -251,4 +251,21 @@ a{
     .reach_us h3{
         text-decoration: underline;
     }
+#about {
+    padding: 50px;
+    margin: 0px auto;
+    text-align: center;
+    height: 680px;
+    width: 500px;   
+    background-color: #4d4d4d;
+    border: 3px solid #999999;
+    overflow: auto;
+}
+    #about h3{  
+        margin-top: 30px; 
+
+    }
+
+
+
 
