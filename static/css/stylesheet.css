@@ -241,13 +241,11 @@ a{
 
 }
 
-<<<<<<< HEAD
 #tabs img{
     
     border: 1px solid silver;
     
 }
-=======
 #download_body {
     width: 1060px;
     margin: 50px auto;
@@ -307,6 +305,8 @@ a{
 }
     #about h3{  
         margin-top: 30px; 
-
     }
->>>>>>> fb2da9b3f0bcee9722dc41ae19d4e9d159824b1f
+#user_interaction p{
+    width: 215px;
+}
+
