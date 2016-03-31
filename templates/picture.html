@@ -49,28 +49,30 @@
 					<p id="pic_price">Price: ${{ photo['price'] }}</p>
 
 					<form action='/add_to_cart/{{ photo['id'] }}' method='post'>
-						<input type='submit' value='Add to Cart'>
+						<input class="cart_button" type='submit' value='Add to Cart'>
 					</form>
 
 				</div> 
 
-				{% if 'user_id' in session %}
-					<div id='comments'> 
+				<div id='comments'>
+					{% if 'user_id' in session %}
+ 
 						<form id="comment_form" method='post'>
-							<textarea rows="10" cols="34" name='comment'></textarea><br>
+							<textarea rows="8" cols="34" name='comment'></textarea><br>
 							<input class="submit_button" type='submit' value='Add comment'>
 						</form>
-					</div>
 
-				{% else %}
+					{% else %}
 
 					<p> Log in to add comments </p>
 
-				{% endif %}
+					{% endif %}
 
-				<h4><span id="orange_title">Comments:</span></h4>
-				<div id="comment_box">					
-				</div>
+					<h4><span id="blue_title">Comments:</span></h4>
+					<div id="comment_box">					
+					</div>
+				</div> <!-- end of comments -->
+
 			</div> <!-- end of user_interaction -->			
 		</div>
 	</div>
