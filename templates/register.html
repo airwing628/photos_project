@@ -37,22 +37,30 @@
             {% endif %}
         {% endwith %}
 
+        <div id="registration_body">
 
-        <div class="register">
-            <h3>Register</h3>
-            <div class = 'input flex'>
-                <form action="/process_registration" method="POST">
-                    <input type='hidden' name='action' value='registration'>
-                    <label class = 'justify'>First Name:<input type="text" name="first_name" placeholder="First Name"></label>
-                    <label class = 'justify'>Last Name:<input type="text" name="last_name" placeholder="Last Name"></label> 
-                    <label class= 'justify'>Email:<input type="text" name="email" placeholder="email"></label>
-                    <label class='justify'>Password:<input type="password" name="password" placeholder="password"></label>
-                    <label class='justify'>Confirm Password<input type="password" name="password2" placeholder="re-enter password"></label>
-                    <label class = 'justify'><input class='button' type="submit" name="submit" value="Register"></label>
-                </form>
-            </div> 
-        </div> <!-- end of register -->  
-        
+            <div class="register">
+
+                <h3>Register</h3>
+
+                <div class = 'input flex'>
+
+                    <form action="/process_registration" method="POST">
+                        <input type='hidden' name='action' value='registration'>
+                        <label class = 'justify'>First Name:<input type="text" name="first_name" placeholder="First Name"></label>
+                        <label class = 'justify'>Last Name:<input type="text" name="last_name" placeholder="Last Name"></label> 
+                        <label class= 'justify'>Email:<input type="text" name="email" placeholder="email"></label>
+                        <label class='justify'>Password:<input type="password" name="password" placeholder="password"></label>
+                        <label class='justify'>Confirm Password<input type="password" name="password2" placeholder="re-enter password"></label>
+                        <label class = 'justify'><input class='button' type="submit" name="submit" value="Register"></label>
+                    </form>
+
+                </div> 
+
+            </div> <!-- end of register -->  
+
+        </div> <!-- end of registration_body -->
+
     </div> <!--end of container -->
    
 </body>

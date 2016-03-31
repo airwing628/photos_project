@@ -128,22 +128,25 @@ a{
     }
 
 .register {
-    width: 300px;
-    height: 400px;
-    padding:10px;
+    width: 280px;
+    height: 200px;
+    padding: 20px 10px;
     border-radius: 5px;
-    background-color: #cccccc;
+    background-color: rgba(192,192,192,0.6);
     color: black;
-    margin: 0px auto;
+    margin: 160px auto;
+    border: 2px solid #585858;
 }
+
     .register h3 {
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 25px;
     }
 
     .register input {
         background-color: #e6e6e6;
         margin: 3px;
+        font-weight: bold;
     }
 .flex input.button {
     margin-left: 125px;
@@ -290,17 +293,21 @@ a{
 }
 
 #contact {
-    margin: 0px auto;
-    padding: 20px;
+    margin: 50px auto;
+    padding: 10px;
     text-align: center;
-    height: 300px;
-    width: 1000px;   
-    background-color: #4d4d4d;
-    border: 3px solid #999999;
+    height: 180px;
+    width: 800px;   
+    background-color: rgba(192,192,192,0.3);
+    border: 1px solid #999999;
+    font-family: arial;
+    font-size: 12px;
 }
+
     #contact h2{
-        margin-top: 70px;
+        margin-top: 40px;
     }
+
 .reach_us {
     margin: 40px 2px 20px 2px;
     display: inline-block;
@@ -310,19 +317,18 @@ a{
     .reach_us h3{
         text-decoration: underline;
     }
+
 #about {
     padding: 50px;
-    margin: 0px auto;
+    margin: 50px auto;
     text-align: center;
-    height: 680px;
+    height: 200px;
     width: 500px;   
-    background-color: #4d4d4d;
-    border: 3px solid #999999;
-    overflow: auto;
+    background-color: rgba(192,192,192,0.3);
+    border: 1px solid #999999;
+    color: white;
 }
-    #about h3{  
-        margin-top: 30px; 
-    }
+
 #user_interaction p{
     width: 215px;
 }
@@ -334,4 +340,25 @@ a{
 
 .flex {
     display: flex;
+}
+
+#registration_body {
+    width: 1200px;
+    height: 797px;
+    background-image: url("/static/balloon.JPG");
+    border: 1px solid black;
+}
+
+#contact_body {
+    width: 1200px;
+    height: 800px;
+    background-image: url("/static/volcano.JPG"); 
+    border: 1px solid black;   
+}
+
+#about_body {
+    width: 1200px;
+    height: 800px;
+    background-image: url("/static/stars.JPG"); 
+    border: 1px solid black;   
 }
