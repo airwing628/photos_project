@@ -9,14 +9,16 @@
 <body>
 	<div id='container'>
 		<div id='header'>
-			<h1>Logo Here</h1>
+            <div id="logo">
+                <h1>Photo Dojo</h1>
+            </div>
 			{% if 'email' not in session %}
                 <div id="login_register">
                     <p>Login</p>
                     <form action="/login" method="POST">
                         <input class="input_fields" type="text" name="email" placeholder="email">
                         <input class="input_fields" type="password" name="password" placeholder="password">
-                        <input id="submit_button" type="submit" value="submit">  
+                        <input class="submit_button" type="submit" value="submit">  
                     </form>
                     <a href="/register">Not a user? Register <span id="blue">here</span></a>
                 </div>
@@ -55,12 +57,19 @@
 					</form>
 				</div> 
 
-				<div id='comments'> 
-					<form id="comment_form" action='' method='post'>
-						<textarea rows="10" cols="34" name='comment'></textarea><br>
-						<input class="submit_button" type='submit' value='Add comment'>
-					</form>
-				</div>
+				{% if 'user_id' in session %}
+					<div id='comments'> 
+						<form id="comment_form" action='' method='post'>
+							<textarea rows="10" cols="34" name='comment'></textarea><br>
+							<input class="submit_button" type='submit' value='Add comment'>
+						</form>
+					</div>
+
+				{% else %}
+
+					<p> Log in to add comments </p>
+
+				{% endif %}
 
 				<div id="comment_box">					
 				</div>
@@ -69,12 +78,13 @@
 	</div>
 
 	<script type="text/javascript">
+
 		$.get('/get_comments/index_json/{{ photo["id"] }}', function(res){
 			console.log(res);
 			html_str = "";
 			for (var i = 0; i<res.comments.length; i++){
-				html_str += "<p>"+res.comments[i].first_name+" says: "+res.comments[i].comment+"</p><p>"+res.comments[i].created_at+"</p>"
-			}
+				html_str += "<p><span id='blue_name'>"+res.comments[i].first_name+" says ("+res.comments[i].created_at+"): </span>"+res.comments[i].comment+"</p><br>"
+			};
 			console.log(html_str);
 			$("#comment_box").html(html_str);
 		}, 'json');
@@ -84,7 +94,7 @@
 			$.post('/insert_comment/index_json/{{ photo["id"] }}', $(this).serialize(), function(res){
 				html_str = "";
 				for (var i = 0; i<res.comments.length; i++){
-				html_str += "<p>"+res.comments[i].first_name+" says: "+res.comments[i].comment+"</p><p>"+res.comments[i].created_at+"</p>"
+					html_str += "<p><span id='blue_name'>"+res.comments[i].first_name+" says ("+res.comments[i].created_at+"): </span>"+res.comments[i].comment+"</p><br>"
 				};
 				console.log(html_str);
 				$("#comment_box").html(html_str);

@@ -22,17 +22,25 @@ body {
     color: white;
 }
 
-    #header h1{
+    #header h1 {
         display: inline-block;
         margin-left: 40px;
+        color: orange;
+        font-family: tahoma;
+        font-size: 2.6em;
+    }
+
+    #header #logo {
+        width: 850px;
+        display: inline-block;
+        padding-top: 5px;
     }
 
 
-
 #login_register {
-    margin-left: 650px;
     display: inline-block; 
     vertical-align: top;
+    width: 320px;
 }
 
 #logout {
@@ -80,18 +88,17 @@ a{
 }
 
 .thumbnails{
-    width: 265px;
+    width: 280px;
     vertical-align: top;
     border: 3px solid gray;
-    
-    
+    margin-right: 11px
 }
 
 #bottom_pics{
-    width: 1100px;
+    width: 1200px;
     margin-top: 15px;
+    padding-left: 5px;
 }
-
 
 #blue {
     color: #99FFFF;
@@ -123,7 +130,7 @@ a{
 }
 
 #flashed_messages {
-    margin-left: 847px;
+    margin-left: 866px;
     color: red;
 }
 
@@ -162,4 +169,10 @@ a{
     background-color: white;
     overflow: auto;
     color: black;
+    font-size: 14px;
+}
+
+#blue_name {
+    font-weight: bold;
+    color: blue;
 }    
