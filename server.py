@@ -20,6 +20,8 @@ def index():
         query = "SELECT * FROM photos"
         all_photos = mysql.fetch(query)
         session['all_photos'] = all_photos
+    if 'total_items' not in session:
+        session['total_items'] = 0
     return render_template('index.html')
 
 @app.route('/register')
@@ -91,7 +93,6 @@ def logout():
 
 @app.route('/category')
 def category(): 
-    print session['all_photos']
     return render_template('category.html')
 
 @app.route('/payment')
@@ -128,9 +129,19 @@ def insert_comment(id):
     query = "INSERT INTO comments (comment, created_at, updated_at, user_id, photo_id) VALUES ('{}', NOW(), NOW(), '{}', '{}')".format(request.form['comment'], session['user_id'], id)
     mysql.run_mysql_query(query)
     query = "SELECT comments.comment, users.first_name, DATE_FORMAT(comments.created_at, '%M %d, %Y, %I:%i:%s %p') AS created_at FROM comments JOIN users ON users.id = comments.user_id WHERE comments.photo_id={} ORDER BY created_at DESC".format(id)
-    print query
     comments = mysql.fetch(query)
     return jsonify(comments=comments)
+
+@app.route('/add_to_cart/<id>', methods=['POST'])
+def add_to_cart(id):
+    print id
+    if 'cart' not in session:
+        session['cart'] = []
+        session['cart'].append(id)
+    else:
+        session['cart'].append(id)
+    session['total_items'] = len(session['cart'])
+    return redirect ('/category')
 
 app.run(debug=True)
 

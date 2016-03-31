@@ -7,9 +7,9 @@
 <body>
 	<div id='container'>
 		<div id='header'>
-            <div id="logo">
-                <h1>Photo Dojo</h1>
-            </div>
+
+            <h1>Photo Dojo</h1>
+
 			{% if 'email' not in session %}
                 <div id="login_register">
                     <p>Login</p>
@@ -21,8 +21,8 @@
                     <a href="/register">Not a user? Register <span id="blue">here</span></a>
                 </div>
             {% else %}
-                <div id="logout">
-                    <p>Welcome {{ session['first_name']}} &nbsp &nbsp | &nbsp &nbsp <a href="/logout">Logout</a> &nbsp &nbsp | &nbsp &nbsp<a href="">Cart</a></p>
+                <div id="welcome_cart">
+                    <p>Welcome {{ session['first_name']}} &nbsp &nbsp | &nbsp &nbsp <a href="">Cart ( {{ session['total_items']}} )</a> &nbsp &nbsp | &nbsp &nbsp<a href="/logout">Logout</a></p>
                 </div>
 
             {% endif %}

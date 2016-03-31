@@ -37,9 +37,7 @@
 
         <div id="header">
 
-            <div id="logo">
-                <h1>Photo Dojo</h1>
-            </div>
+            <h1>Photo Dojo</h1>
 
             {% if 'email' not in session %}
                 <div id="login_register">
@@ -56,9 +54,9 @@
                 </div> <!-- end of login_register -->
 
             {% else %}
-                <div id="logout">
-                    <p>Welcome {{ session['first_name']}} &nbsp &nbsp | &nbsp &nbsp <a href="/logout">Logout</a></p>
-                </div> <!-- end of logout -->
+                <div id="welcome_cart">
+                    <p>Welcome {{ session['first_name']}} &nbsp &nbsp | &nbsp &nbsp <a href="">Cart ( {{ session['total_items']}} )</a> &nbsp &nbsp | &nbsp &nbsp<a href="/logout">Logout</a></p>
+                </div>
 
             {% endif %}
 

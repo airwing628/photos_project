@@ -28,6 +28,8 @@ body {
         color: orange;
         font-family: tahoma;
         font-size: 2.6em;
+        width: 800px;
+        padding-top: 5px;
     }
 
     #header #logo {
@@ -41,13 +43,6 @@ body {
     display: inline-block; 
     vertical-align: top;
     width: 320px;
-}
-
-#logout {
-    margin-left: 750px;
-    margin-top: 20px;
-    display: inline-block;
-    text-decoration: none;
 }
 
     #login_register a {
@@ -65,6 +60,17 @@ body {
 
     #login_register input.input_fields {
         background: white;
+    }
+
+#welcome_cart {
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: top;
+}
+
+    #welcome_cart a {
+        text-decoration: none;
     }
 
 a{
@@ -130,7 +136,7 @@ a{
 }
 
 #flashed_messages {
-    margin-left: 866px;
+    margin-left: 855px;
     color: red;
 }
 

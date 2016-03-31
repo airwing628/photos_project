@@ -9,9 +9,9 @@
 <body>
 	<div id='container'>
 		<div id='header'>
-            <div id="logo">
-                <h1>Photo Dojo</h1>
-            </div>
+
+            <h1>Photo Dojo</h1>
+
 			{% if 'email' not in session %}
                 <div id="login_register">
                     <p>Login</p>
@@ -23,8 +23,8 @@
                     <a href="/register">Not a user? Register <span id="blue">here</span></a>
                 </div>
             {% else %}
-                <div id="logout">
-                    <p>Welcome {{ session['first_name']}} &nbsp &nbsp | &nbsp &nbsp <a href="/logout">Logout</a> &nbsp &nbsp | &nbsp &nbsp<a href="">Cart</a></p>
+                <div id="welcome_cart">
+                    <p>Welcome {{ session['first_name']}} &nbsp &nbsp | &nbsp &nbsp <a href="">Cart ( {{ session['total_items']}} )</a> &nbsp &nbsp | &nbsp &nbsp<a href="/logout">Logout</a></p>
                 </div>
 
             {% endif %}
@@ -45,21 +45,25 @@
 			<div id="user_interaction">
 
 				<div id='row'>
-					<div id='likes'>
+
+<!-- 					<div id='likes'>
 						<form action='/like' method='post'>
 							<input type='submit' value='Like'>
 						</form>  
-					</div>
+					</div> -->
+
 					<div id='price'>
+						<p>Price: ${{ photo['price'] }}</p>
 					</div>
-					<form action='/purchase' method= 'post'>
+					<form action='/add_to_cart/{{ photo['id'] }}' method='post'>
 						<input type='submit' value='Add to Cart'>
 					</form>
+
 				</div> 
 
 				{% if 'user_id' in session %}
 					<div id='comments'> 
-						<form id="comment_form" action='' method='post'>
+						<form id="comment_form" method='post'>
 							<textarea rows="10" cols="34" name='comment'></textarea><br>
 							<input class="submit_button" type='submit' value='Add comment'>
 						</form>
