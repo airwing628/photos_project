@@ -46,15 +46,8 @@
 
 				<div id='row'>
 
-<!-- 					<div id='likes'>
-						<form action='/like' method='post'>
-							<input type='submit' value='Like'>
-						</form>  
-					</div> -->
+					<p id="pic_price">Price: ${{ photo['price'] }}</p>
 
-					<div id='price'>
-						<p>Price: ${{ photo['price'] }}</p>
-					</div>
 					<form action='/add_to_cart/{{ photo['id'] }}' method='post'>
 						<input type='submit' value='Add to Cart'>
 					</form>
@@ -75,6 +68,7 @@
 
 				{% endif %}
 
+				<h4><span id="orange_title">Comments:</span></h4>
 				<div id="comment_box">					
 				</div>
 			</div> <!-- end of user_interaction -->			

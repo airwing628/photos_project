@@ -177,7 +177,17 @@ def process_stripe():
     except stripe.error.CardError, e:
       # The card has been declined
         pass
-    return redirect('/purchase')
+    return redirect('/download')
+
+@app.route('/download')
+def download():
+    session['download'] = []
+    for photo in session['cart']:
+        query = "SELECT * FROM photos WHERE id = {}".format(photo)
+        fetch = mysql.fetch(query)
+        session['download'].append(fetch[0])
+    print session['download']
+    return render_template('download.html', downloads = session['download'])
 
 app.run(debug=True)
 
