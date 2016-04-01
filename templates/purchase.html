@@ -43,7 +43,11 @@
 
 					{% for item in session['total_cart'] %}
 
-						<img src="{{ item['small_url'] }}">  <p>${{ item['price'] }} </p> <a href="/remove_cart_item/{{ item['id'] }}">Remove from cart</a>
+						<img src="{{ item['small_url'] }}">
+
+						<div class='pic_info'>  
+							<p>${{ item['price'] }} </p> <a class="remove_from_cart" href="/remove_cart_item/{{ item['id'] }}">Remove from cart</a>
+						</div>
 
 					{% endfor %}
 				{% endif %}	

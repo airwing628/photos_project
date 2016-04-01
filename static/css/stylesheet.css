@@ -236,8 +236,10 @@ a{
 
     #checkout p{
         margin-left: 100px;
-        margin-right: 100px;
+        margin-bottom: 10px;
         display: inline-block;
+        width: 180px;
+        font-size: 24px;
     }
 
 #purchase {
@@ -369,4 +371,22 @@ a{
     height: 800px;
     background-image: url("/static/stars.JPG"); 
     border: 1px solid black;   
+}
+
+#red_flash {
+    color: red;
+}
+
+#not_logged_in {
+    margin: 20px 0px;
+}
+
+.remove_from_cart {
+    font-size: 12px;
+}
+
+.pic_info {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 35px;
 }
