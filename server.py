@@ -112,7 +112,8 @@ def payment():
 def purchase(): 
     session['total_cart'] = []
     if 'cart' not in session:
-        return render_template('/purchase.html')
+        total_price = 0
+        return render_template('/purchase.html', total_price = total_price)
     if len(session['cart']) == 0:
         cart = "empty"
         total_price = 0

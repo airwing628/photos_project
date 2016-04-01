@@ -38,7 +38,7 @@
 
 			<div id = "checkout">
 				{%if 'cart' not in session or cart == "empty" %}
-					<p>Cart is empty</p>
+					<p>Your cart is empty</p>
 				{% else %}	
 
 					{% for item in session['total_cart'] %}
@@ -58,17 +58,22 @@
 
 				<p><span id="red">Total: </span> $ {{ total_price }} </p>
 
-				<form action="/process_stripe" method="POST">
-				  <script
-				    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-				    data-key="pk_test_0haGVlEcEiv6PMEEi0jEHzn9"
-				    data-amount = "{{ total_price }}00"
-				    data-name="Photo Dojo"
-				    data-description="{{ session['total_items'] }} photos (${{total_price}})"
-				    data-image="/static/sd-100309-balloon-05.jpg"
-				    data-locale="auto">
-				  </script>
-				</form>
+				{% if total_price > 0 %}
+
+					<form action="/process_stripe" method="POST">
+					  <script
+					    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+					    data-key="pk_test_0haGVlEcEiv6PMEEi0jEHzn9"
+					    data-amount = "{{ total_price }}00"
+					    data-name="Photo Dojo"
+					    data-description="{{ session['total_items'] }} photos (${{total_price}})"
+					    data-image="/static/sd-100309-balloon-05.jpg"
+					    data-locale="auto">
+					  </script>
+					</form>
+
+				{% endif %}
+
 			</div> <!-- end of purchase -->
 
 		</div>
