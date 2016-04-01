@@ -64,8 +64,13 @@ def process_registration():
         email = request.form['email']
         password = request.form['password'] 
         pw_hash = bcrypt.generate_password_hash(password)
-        query = "INSERT INTO users (first_name, last_name, email, password) VALUES ('{}', '{}', '{}','{}')".format(request.form['first_name'], request.form['last_name'], request.form['email'], pw_hash)
+        query = "INSERT INTO users (first_name, last_name, email, password) VALUES ('{}', '{}', '{}','{}')".format(re.escape(request.form['first_name']), re.escape(request.formrequest.form['last_name']), re.escape(request.form['email']), pw_hash)
         mysql.run_mysql_query(query)
+        query = "SELECT * FROM users WHERE email = '{}'".format(email)
+        user = mysql.fetch(query)
+        session['first_name'] = user[0]['first_name']
+        session['email'] = user[0]['email']
+        session['user_id'] = user[0]['id']
         return redirect('/')
 
 
@@ -106,14 +111,21 @@ def payment():
 @app.route('/purchase')
 def purchase(): 
     session['total_cart'] = []
-    for photo in session['cart']:
-        query = "SELECT * FROM photos WHERE id = {}".format(photo)
-        fetch = mysql.fetch(query)
-        session['total_cart'].append(fetch[0])
-    total_price = 0
-    for i in range(0, len(session['total_cart'])):
-        total_price += session['total_cart'][i]['price']
-    return render_template('purchase.html', total_price = total_price)
+    if 'cart' not in session:
+        return render_template('/purchase.html')
+    if len(session['cart']) == 0:
+        cart = "empty"
+        total_price = 0
+    else:
+        cart = "not_empty"      
+        for photo in session['cart']:
+            query = "SELECT * FROM photos WHERE id = {}".format(photo)
+            fetch = mysql.fetch(query)
+            session['total_cart'].append(fetch[0])
+        total_price = 0
+        for i in range(0, len(session['total_cart'])):
+            total_price += session['total_cart'][i]['price']
+    return render_template('purchase.html', total_price = total_price, cart=cart)
 
 @app.route('/display_photo/<id>')
 def display_photo(id):
@@ -138,7 +150,7 @@ def get_comments(id):
 
 @app.route('/insert_comment/index_json/<id>', methods=['POST'])
 def insert_comment(id):
-    query = "INSERT INTO comments (comment, created_at, updated_at, user_id, photo_id) VALUES ('{}', NOW(), NOW(), '{}', '{}')".format(request.form['comment'], session['user_id'], id)
+    query = "INSERT INTO comments (comment, created_at, updated_at, user_id, photo_id) VALUES ('{}', NOW(), NOW(), '{}', '{}')".format(re.escape(request.form['comment']), session['user_id'], id)
     mysql.run_mysql_query(query)
     query = "SELECT comments.comment, users.first_name, DATE_FORMAT(comments.created_at, '%M %d, %Y, %I:%i:%s %p') AS created_at FROM comments JOIN users ON users.id = comments.user_id WHERE comments.photo_id={} ORDER BY created_at DESC".format(id)
     comments = mysql.fetch(query)

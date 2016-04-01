@@ -34,15 +34,19 @@
                 <li><a href="/contact">Contact</a></li>
             </ul>
         </div> <!--end of nav-->
-		<div id='body'>
+		<div id='purchase_body'>
 
 			<div id = "checkout">
+				{%if 'cart' not in session or cart == "empty" %}
+					<p>Cart is empty</p>
+				{% else %}	
 
-				{% for item in session['total_cart'] %}
+					{% for item in session['total_cart'] %}
 
-					<img src="{{ item['small_url'] }}">  <p>${{ item['price'] }} </p> <a href="/remove_cart_item/{{ item['id'] }}">Remove from cart</a>
+						<img src="{{ item['small_url'] }}">  <p>${{ item['price'] }} </p> <a href="/remove_cart_item/{{ item['id'] }}">Remove from cart</a>
 
-				{% endfor %}
+					{% endfor %}
+				{% endif %}	
 
 			</div>
 
