@@ -38,7 +38,7 @@ def process_registration():
     if request.form['email'] == "" or not EMAIL_REGEX.match(request.form['email']):
         flash("Please enter a valid email address")
         valid = False
-    query = "SELECT * FROM users WHERE email = '{}'".format( request.form['email'])
+    query = "SELECT * FROM users WHERE email = '{}'".format(re.escape(request.form['email']))
     user = mysql.fetch(query)
     if len(user)>0:
         flash('Email already exists')
@@ -64,8 +64,7 @@ def process_registration():
         email = request.form['email']
         password = request.form['password'] 
         pw_hash = bcrypt.generate_password_hash(password)
-        query = "INSERT INTO users (first_name, last_name, email, password) VALUES ('{}', '{}', '{}','{}')".format(re.escape(request.form['first_name']), re.escape(request.form['last_name']), re.escape(request.form['email']), pw_hash)
-        print query
+        query = "INSERT INTO users (first_name, last_name, email, password) VALUES ('{}', '{}', '{}','{}')".format(re.escape(first_name), re.escape(request.form['last_name']), re.escape(request.form['email']), pw_hash)
         mysql.run_mysql_query(query)
         query = "SELECT * FROM users WHERE email = '{}'".format(re.escape(email))
         user = mysql.fetch(query)
@@ -80,7 +79,7 @@ def login():
     valid = True
     email = request.form['email']
     password = request.form['password'] 
-    query = "SELECT * FROM users WHERE email = '{}'".format(email)
+    query = "SELECT * FROM users WHERE email = '{}'".format(re.escape(email))
     user = mysql.fetch(query)
     if len(user) < 1:
         flash('Invalid user/password combo')
