@@ -65,8 +65,9 @@ def process_registration():
         password = request.form['password'] 
         pw_hash = bcrypt.generate_password_hash(password)
         query = "INSERT INTO users (first_name, last_name, email, password) VALUES ('{}', '{}', '{}','{}')".format(re.escape(request.form['first_name']), re.escape(request.form['last_name']), re.escape(request.form['email']), pw_hash)
+        print query
         mysql.run_mysql_query(query)
-        query = "SELECT * FROM users WHERE email = '{}'".format(email)
+        query = "SELECT * FROM users WHERE email = '{}'".format(re.escape(email))
         user = mysql.fetch(query)
         session['first_name'] = user[0]['first_name']
         session['email'] = user[0]['email']
