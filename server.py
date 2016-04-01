@@ -38,7 +38,7 @@ def process_registration():
     if request.form['email'] == "" or not EMAIL_REGEX.match(request.form['email']):
         flash("Please enter a valid email address")
         valid = False
-    query = "SELECT * FROM users WHERE email = '{}'".format( request.form['email'])
+    query = "SELECT * FROM users WHERE email = '{}'".format(re.escape(request.form['email']))
     user = mysql.fetch(query)
     if len(user)>0:
         flash('Email already exists')
@@ -80,7 +80,7 @@ def login():
     valid = True
     email = request.form['email']
     password = request.form['password'] 
-    query = "SELECT * FROM users WHERE email = '{}'".format(email)
+    query = "SELECT * FROM users WHERE email = '{}'".format(re.escape(email))
     user = mysql.fetch(query)
     if len(user) < 1:
         flash('Invalid user/password combo')
