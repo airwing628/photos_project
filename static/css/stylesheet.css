@@ -295,13 +295,6 @@ a{
     overflow: none;
 }
 
-/*#purchase_body{
-    width: 1200px;
-    height: 797px;
-    background-image: url("/static/MaunaKea-10.JPG");
-    border: 1px solid black;
-}*/
-
 #contact {
     margin: 50px auto;
     padding: 10px;
@@ -355,21 +348,21 @@ a{
 #registration_body {
     width: 1200px;
     height: 797px;
-    background-image: url("/static/balloon.JPG");
+    background-image: url("/static/images/balloon.JPG");
     border: 1px solid black;
 }
 
 #contact_body {
     width: 1200px;
     height: 800px;
-    background-image: url("/static/volcano.JPG"); 
+    background-image: url("/static/images/volcano.JPG"); 
     border: 1px solid black;   
 }
 
 #about_body {
     width: 1200px;
     height: 800px;
-    background-image: url("/static/stars.JPG"); 
+    background-image: url("/static/images/stars.JPG"); 
     border: 1px solid black;   
 }
 

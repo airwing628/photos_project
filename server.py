@@ -176,6 +176,7 @@ def remove_cart_item(id):
 @app.route('/process_stripe', methods=['POST'])
 def process_stripe():
     print request.form
+    print 'in process stripe'
     stripe.api_key = "sk_test_UhKc5Gi7liEBEhQ3Hfs9FvRs"
     # Get the credit card details submitted by the form
     token = request.form['stripeToken']
