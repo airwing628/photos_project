@@ -16,13 +16,13 @@ bcrypt = Bcrypt(app)
 
 app.secret_key = 'ThisIsSecret'
 
-mysql = MySQLConnector('photos_db')
+mysql = MySQLConnector(app, 'photos_db')
 
 @app.route('/')
 def index():       
     if 'all_photos' not in session:
         query = "SELECT * FROM photos"
-        all_photos = mysql.fetch(query)
+        all_photos = mysql.query_db(query)
         session['all_photos'] = all_photos
     if 'total_items' not in session:
         session['total_items'] = 0
@@ -39,7 +39,7 @@ def process_registration():
         flash("Please enter a valid email address")
         valid = False
     query = "SELECT * FROM users WHERE email = '{}'".format(re.escape(request.form['email']))
-    user = mysql.fetch(query)
+    user = mysql.query_db(query)
     if len(user)>0:
         flash('Email already exists')
         valid = False
@@ -67,7 +67,7 @@ def process_registration():
         query = "INSERT INTO users (first_name, last_name, email, password) VALUES ('{}', '{}', '{}','{}')".format(re.escape(first_name), re.escape(request.form['last_name']), re.escape(request.form['email']), pw_hash)
         mysql.run_mysql_query(query)
         query = "SELECT * FROM users WHERE email = '{}'".format(re.escape(email))
-        user = mysql.fetch(query)
+        user = mysql.query_db(query)
         session['first_name'] = user[0]['first_name']
         session['email'] = user[0]['email']
         session['user_id'] = user[0]['id']
@@ -80,7 +80,7 @@ def login():
     email = request.form['email']
     password = request.form['password'] 
     query = "SELECT * FROM users WHERE email = '{}'".format(re.escape(email))
-    user = mysql.fetch(query)
+    user = mysql.query_db(query)
     if len(user) < 1:
         flash('Invalid user/password combo')
     else: 
@@ -121,8 +121,8 @@ def purchase():
         cart = "not_empty"      
         for photo in session['cart']:
             query = "SELECT * FROM photos WHERE id = {}".format(photo)
-            fetch = mysql.fetch(query)
-            session['total_cart'].append(fetch[0])
+            query_db = mysql.query_db(query)
+            session['total_cart'].append(query_db[0])
         total_price = 0
         for i in range(0, len(session['total_cart'])):
             total_price += session['total_cart'][i]['price']
@@ -131,7 +131,7 @@ def purchase():
 @app.route('/display_photo/<id>')
 def display_photo(id):
     query = 'SELECT * FROM photos WHERE id="{}"'.format(id)
-    photo = mysql.fetch(query)
+    photo = mysql.query_db(query)
     return render_template('picture.html', photo = photo[0])  
 
 
@@ -146,7 +146,7 @@ def contact():
 @app.route('/get_comments/index_json/<id>')
 def get_comments(id):
     query = "SELECT comments.comment, users.first_name, DATE_FORMAT(comments.created_at, '%M %d, %Y, %I:%i:%s %p') AS created_at FROM comments JOIN users ON users.id = comments.user_id WHERE comments.photo_id={} ORDER BY created_at DESC".format(id)
-    comments = mysql.fetch(query)
+    comments = mysql.query_db(query)
     return jsonify(comments=comments)
 
 @app.route('/insert_comment/index_json/<id>', methods=['POST'])
@@ -154,7 +154,7 @@ def insert_comment(id):
     query = "INSERT INTO comments (comment, created_at, updated_at, user_id, photo_id) VALUES ('{}', NOW(), NOW(), '{}', '{}')".format(re.escape(request.form['comment']), session['user_id'], id)
     mysql.run_mysql_query(query)
     query = "SELECT comments.comment, users.first_name, DATE_FORMAT(comments.created_at, '%M %d, %Y, %I:%i:%s %p') AS created_at FROM comments JOIN users ON users.id = comments.user_id WHERE comments.photo_id={} ORDER BY created_at DESC".format(id)
-    comments = mysql.fetch(query)
+    comments = mysql.query_db(query)
     return jsonify(comments=comments)
 
 @app.route('/add_to_cart/<id>', methods=['POST'])
@@ -199,8 +199,8 @@ def process_download():
     session['download'] = []
     for photo in session['cart']:
         query = "SELECT * FROM photos WHERE id = {}".format(photo)
-        fetch = mysql.fetch(query)
-        session['download'].append(fetch[0])
+        query_db = mysql.query_db(query)
+        session['download'].append(query_db[0])
     session.pop('cart')
     return redirect('/download')
 
