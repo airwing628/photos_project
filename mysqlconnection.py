@@ -8,13 +8,20 @@ class MySQLConnection(object):
         config = {
                 'host': 'localhost',
                 'database': db, 
-                'user': 'root',
-                'password': 'root',
+                'user': 'winghliang',
+                'password': '0y5DJHF5qD7E',
                 'port': '8889' 
+
+                # prior to deployment
+                # 'host': 'localhost',
+                # 'database': db, 
+                # 'user': 'root',
+                # 'password': 'root',
+                # 'port': '8889'
         }
 
         # use the above values to generate the path to connect to sql database
-        DATABASE_URI = "mysql+pymysql://{}:{}@127.0.0.1:{}/{}".format(config['user'], config['password'], config['port'], config['database'])
+        DATABASE_URI = "mysql+pymysql://{}:{}@photosprojectdb.cqme9ibofuzm.us-west-2.rds.amazonaws.com:{}/{}".format(config['user'], config['password'], config['port'], config['database'])
         app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
         app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 

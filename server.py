@@ -16,7 +16,7 @@ bcrypt = Bcrypt(app)
 
 app.secret_key = 'ThisIsSecret'
 
-mysql = MySQLConnector(app, 'photos_db')
+mysql = MySQLConnector(app, 'photosprojectdb')
 
 @app.route('/')
 def index():       
