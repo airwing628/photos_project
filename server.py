@@ -208,7 +208,8 @@ def process_download():
 def download():
     return render_template('download.html', downloads=session['download'])
 
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
 
 
 
