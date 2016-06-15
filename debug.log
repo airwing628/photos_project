@@ -1,0 +1,82 @@
+Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "./server.py", line 32, in index
+    all_photos = mysql.query_db(query)
+  File "./mysqlconnection.py", line 33, in query_db
+    result = self.db.session.execute(text(query), data)
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/sqlalchemy/orm/scoping.py", line 157, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/sqlalchemy/util/_collections.py", line 990, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 771, in create_session
+    return SignallingSession(self, **options)
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 155, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 893, in engine
+    return self.get_engine(self.get_app())
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 910, in get_engine
+    return connector.get_engine()
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 545, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/sqlalchemy/engine/__init__.py", line 386, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/sqlalchemy/engine/strategies.py", line 75, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/sqlalchemy/dialects/mysql/pymysql.py", line 49, in dbapi
+    return __import__('pymysql')
+ImportError: No module named pymysql
+Exception on /process_registration [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "./server.py", line 75, in process_registration
+    mysql.run_mysql_query(query)
+AttributeError: 'MySQLConnection' object has no attribute 'run_mysql_query'
+Exception on /process_registration [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "./server.py", line 75, in process_registration
+    mysql.run_mysql_query(query)
+AttributeError: 'MySQLConnection' object has no attribute 'run_mysql_query'
+Exception on /process_registration [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/photos_project/photos_project_env/local/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "./server.py", line 75, in process_registration
+    mysql.run_mysql_query(query)
+AttributeError: 'MySQLConnection' object has no attribute 'run_mysql_query'

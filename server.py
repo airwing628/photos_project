@@ -2,6 +2,9 @@ from flask import Flask, send_file, render_template, redirect, request, session,
 
 from mysqlconnection import MySQLConnector
 
+import logging      
+from logging import FileHandler
+
 import re
 
 import stripe
@@ -15,6 +18,10 @@ app = Flask(__name__)
 bcrypt = Bcrypt(app)
 
 app.secret_key = 'ThisIsSecret'
+
+file_handler = FileHandler("debug.log","a")                                                                                             
+file_handler.setLevel(logging.WARNING)
+app.logger.addHandler(file_handler)
 
 mysql = MySQLConnector(app, 'photosprojectdb')
 
@@ -65,7 +72,7 @@ def process_registration():
         password = request.form['password'] 
         pw_hash = bcrypt.generate_password_hash(password)
         query = "INSERT INTO users (first_name, last_name, email, password) VALUES ('{}', '{}', '{}','{}')".format(re.escape(first_name), re.escape(request.form['last_name']), re.escape(request.form['email']), pw_hash)
-        mysql.run_mysql_query(query)
+        mysql.query_db(query)
         query = "SELECT * FROM users WHERE email = '{}'".format(re.escape(email))
         user = mysql.query_db(query)
         session['first_name'] = user[0]['first_name']
@@ -152,7 +159,7 @@ def get_comments(id):
 @app.route('/insert_comment/index_json/<id>', methods=['POST'])
 def insert_comment(id):
     query = "INSERT INTO comments (comment, created_at, updated_at, user_id, photo_id) VALUES ('{}', NOW(), NOW(), '{}', '{}')".format(re.escape(request.form['comment']), session['user_id'], id)
-    mysql.run_mysql_query(query)
+    mysql.query_db(query)
     query = "SELECT comments.comment, users.first_name, DATE_FORMAT(comments.created_at, '%M %d, %Y, %I:%i:%s %p') AS created_at FROM comments JOIN users ON users.id = comments.user_id WHERE comments.photo_id={} ORDER BY created_at DESC".format(id)
     comments = mysql.query_db(query)
     return jsonify(comments=comments)
@@ -209,7 +216,7 @@ def download():
     return render_template('download.html', downloads=session['download'])
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(debug=True)
 
 
 
