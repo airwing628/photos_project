@@ -23,7 +23,7 @@ file_handler = FileHandler("debug.log","a")
 file_handler.setLevel(logging.WARNING)
 app.logger.addHandler(file_handler)
 
-mysql = MySQLConnector(app, 'photosprojectdb')
+mysql = MySQLConnector(app, 'photos_db')
 
 @app.route('/')
 def index():       
